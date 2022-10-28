@@ -1,2 +1,2 @@
 # Real-time-power-consumption-analysis-
-Assignment project for the Open Source Technologies &amp; Stream Mining subjects.
+With the electricity consumption being so crucial worldwide, the idea is to study the impact on energy consumption. The dataset is exhaustive in its demonstration of energy consumption of the Tétouan city in Morocco. The distribution network is powered by 3 Zone stations.The data consists of 52,416 observations of energy consumption on a 10-minute window. Every observation is described by 9 feature columns.
