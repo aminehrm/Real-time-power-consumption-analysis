@@ -7,7 +7,8 @@ With the electricity consumption being so crucial worldwide, the idea is to stud
 ![architecture](https://user-images.githubusercontent.com/17914107/201059480-6cc7c7a5-e341-4e85-84c0-1d6253925cad.png)
 
 <br />
-## Steps to run the project :<br />
+## Steps to run the project 
+<br />
 1- Run "docker-compose up" in root direcotry<br />
 2- Generate new Influxdb credentials (api token) and replace it in .env , telegraf/teleraf.conf and loadStream.py<br />
 3- Run "docker-compose down" then "docker-compose up" <br />
