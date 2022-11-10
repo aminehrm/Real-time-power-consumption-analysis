@@ -2,12 +2,12 @@
 With the electricity consumption being so crucial worldwide, the idea is to study the impact on energy consumption. The dataset is exhaustive in its demonstration of energy consumption of the Tétouan city in Morocco. The distribution network is powered by 3 Zone stations.The data consists of 52,416 observations of energy consumption on a 10-minute window. Every observation is described by 9 feature columns.<br />
 <br />
 
-##Project architecture diagram
+## Project architecture diagram
 
 ![architecture](https://user-images.githubusercontent.com/17914107/201059480-6cc7c7a5-e341-4e85-84c0-1d6253925cad.png)
 
 <br />
-##Steps to run the project :<br />
+## Steps to run the project :<br />
 1- Run "docker-compose up" in root direcotry<br />
 2- Generate new Influxdb credentials (api token) and replace it in .env , telegraf/teleraf.conf and loadStream.py<br />
 3- Run "docker-compose down" then "docker-compose up" <br />
@@ -15,12 +15,12 @@ With the electricity consumption being so crucial worldwide, the idea is to stud
 3- Create a new Influxdb data source in Grafana <br />
 
 
-##Influxdb http://localhost:8086/ ( admin - admin123 )<br />
+## Influxdb http://localhost:8086/ ( admin - admin123 )<br />
 
 ![influxdb](https://user-images.githubusercontent.com/17914107/201059618-1e2e6d4a-64f0-4d60-aaee-8c9577018873.png)
 <br />
 
-##Grafana http://localhost:3000/ ( admin - admin )<br />
+## Grafana http://localhost:3000/ ( admin - admin )<br />
 
 ![Grafana](https://user-images.githubusercontent.com/17914107/201059564-3c2dacc0-044f-48f4-b645-eddd398ae387.png)
 
