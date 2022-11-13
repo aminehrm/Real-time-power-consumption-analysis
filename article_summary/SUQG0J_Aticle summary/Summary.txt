@@ -1,0 +1,30 @@
+
+
+Proposed system analyses the real-time electrical energy 
+consumption of a smart home and will forecast the future power c
+onsumption using ARIMA model which gives better results for the time-series data analysis. This system aims is to predict the future electricity consumption for some services 
+in smart homes in an efficient way. 
+
+Predictive analysis is an approach to forecast data on the basis of historical data. 
+Time-series data is the order of historical data, which resembles the group or 
+observation of the data that have been collected over time according to the continuous 
+period of time. It consists of four components: trend, seasonal effect, cyclical, and 
+irregular effect [2]. The analysis of a time series used forecasting techniques is to 
+identify and built models from the past data. According to the trend of data, we can 
+forecast the future events.
+
+Many models are implemented to deal with time series data, ARIMA is one of the models which 
+can be used for predictive analysis. ARIMA stands for AutoRegressive Moving Average; is 
+actually a class of models that explains a given time-series data based on its own past 
+values
+
+ARIMA model uses the dependency between an observation and residual errors from a moving 
+average model applied to lagged observations and are applied in cases where data shows some 
+non-stationarity in it
+
+The parameters of the ARIMA model are defined as follows: 
+• p: Lag order; The number of lag observations included in the model. 
+• d: Degree of differencing; The number of times that the raw observations are differenced. 
+• q: moving average; The size of the moving average window.
+
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3819512
