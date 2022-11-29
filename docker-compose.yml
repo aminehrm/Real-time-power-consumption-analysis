@@ -103,13 +103,15 @@ services:
     image: chronograf:latest
     container_name: chronograf
     ports:
-      - 8082:8082
+      - 127.0.0.1:8888:8888
+    volumes:
+      - chronograf-storage:/var/lib/chronograf
     depends_on:
       - influxdb
     environment:
       - INFLUXDB_URL=${INFLUXDB_HOST}
       - INFLUXDB_USERNAME={INFLUXDB_ADMIN_USER}
-      - INFLUXDB_PASSWORD={INFLUXDB_ADMIN_PASSWORD}
+      - INFLUXDB_PASSWORD={ADMIN_PASSWORD}
     networks:
       - power-consumption-network
     
@@ -120,6 +122,7 @@ networks:
 
 volumes:
   grafana-data:
+  chronograf-storage:
   influxdb-data:
  
 
