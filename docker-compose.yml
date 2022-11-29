@@ -8,39 +8,47 @@ services:
       - ZOOKEEPER_CLIENT_PORT=32181
     ports:
       - 32181:32181
+    networks:
+      - power-consumption-network
 
   kafka:
     image: confluentinc/cp-kafka:6.2.0
-    hostname: kafka
     container_name: kafka
-    environment:
-      - KAFKA_BROKER_ID=1
-      - KAFKA_ADVERTISED_HOST_NAME=localhost
-      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:32181
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
-      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
-      - KAFKA_CREATE_TOPICS=powerConsumption:1:1
-    ports:
-      - 9092:9092
-    restart: on-failure
     depends_on:
       - zookeeper
-    healthcheck:
-      test: nc -z localhost 9092 || exit -1
-      interval: 20s
-      timeout: 10s
-      retries: 5
-      
-  pyspark:
-    image: jupyter/pyspark-notebook
-    #build: ./spark
-    container_name: pyspark
-    ports:
-      - 8888:8888
-    volumes:
-      - ./dataset:/dataset
     networks:
       - power-consumption-network
+    ports:
+      - 9092:9092
+      - 30001:30001
+    environment:
+      KAFKA_CREATE_TOPICS: powerConsumption,processedPowerConsumption
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:32181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 100 
+      
+  pyspark:
+    container_name: pyspark
+    image: docker.io/bitnami/spark:3
+    hostname: spark
+    build: ./spark
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    ports:
+        - 8080:8080
+    networks:
+        - power-consumption-network
+    volumes:
+        - ./spark:/sparkScripts:rw
 
   influxdb:
     container_name: influxdb
@@ -56,7 +64,6 @@ services:
       - INFLUXDB_ADMIN_USER=${ADMIN_USERNAME}
       - INFLUXDB_ADMIN_USER_PASSWORD=${ADMIN_PASSWORD}
       - INFLUXDB_ADMIN_USER_TOKEN=${AUTH_TOKEN}
-
     networks:
       - power-consumption-network
 
@@ -96,7 +103,7 @@ services:
     image: chronograf:latest
     container_name: chronograf
     ports:
-      - 8080:8080
+      - 8082:8082
     depends_on:
       - influxdb
     environment:
@@ -105,13 +112,6 @@ services:
       - INFLUXDB_PASSWORD={INFLUXDB_ADMIN_PASSWORD}
     networks:
       - power-consumption-network
-
-  power-consumption-procuder:
-    build:
-      context: ./kafka
-    depends_on:
-      kafka:
-        condition: service_healthy
     
 
 networks:
