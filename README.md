@@ -13,7 +13,7 @@ With the electricity consumption being so crucial worldwide, the idea is to stud
 2- Generate new Influxdb credentials (api token) and replace it in .env , telegraf/teleraf.conf and ProcessedPowerConsumptionConsumer.py and PowerConsumptionConsumer.py<br />
 3- Run "docker-compose down" then "docker-compose up" <br />
 4- Go to kafka folder and run the procedure "python3 Procedure.py" <br /> 
-5- run "spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0 DataPreprocessingSpark.py" inside spark docker container<br /> 
+5- run "docker exec -it [containerID] spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0 DataPreprocessingSpark.py" inside spark docker container<br /> 
 6-  Go to kafka folder again and run the consumer "python3 ProcessedPowerConsumptionConsumer.py" <br /> 
 6- if you want to send data to influxdb without the preprocessing run "python3 PowerConsumptionConsumer.py" <br /> 
 7- Create a new Influxdb data source in Grafana to vizualize the results<br />
