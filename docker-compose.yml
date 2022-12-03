@@ -134,7 +134,8 @@ services:
       dockerfile: ./MongodbStream/app.Dockerfile
       context: .
     image: klogambigai/python-mongo:v1
-    restart: always
+    tty: true  
+    restart: unless-stopped  
     container_name: pyapp
     volumes:
       - ./MongodbStream:/var/www/app
