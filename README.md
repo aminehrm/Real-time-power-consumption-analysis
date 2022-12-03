@@ -7,7 +7,8 @@ With the electricity consumption being so crucial worldwide, the idea is to stud
 ![architecture](https://user-images.githubusercontent.com/17914107/201059480-6cc7c7a5-e341-4e85-84c0-1d6253925cad.png)
 
 <br />
-## Steps to run the project 
+
+## Steps to run the project (with InfluxDB) 
 <br />
 1- Run "docker-compose up" in root direcotry<br />
 2- Generate new Influxdb credentials (api token) and replace it in .env , telegraf/teleraf.conf and ProcessedPowerConsumptionConsumer.py and PowerConsumptionConsumer.py<br />
@@ -26,4 +27,19 @@ With the electricity consumption being so crucial worldwide, the idea is to stud
 ## Grafana http://localhost:3000/ ( admin - admin )<br />
 
 ![Grafana](https://user-images.githubusercontent.com/17914107/201059564-3c2dacc0-044f-48f4-b645-eddd398ae387.png)
+
+
+<br />
+
+## Steps to run the project (with MongoDB) 
+<br />
+1- Run "docker-compose up --build" in root direcotry<br />
+2- Make sure that Mongodb , mongo express and pyapp containers are running<br />
+3- Open mongo express in the browser to check the databases <br />
+4- Go to kafka folder and run the procedure "python3 Procedure.py" <br /> 
+5- run "docker exec -it [Spark containerID]" to be inside SPARK container then run "spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0 DataPreprocessingSpark.py"<br /> 
+6-  Go to inside pyapp container and run the consumer "python3 ProcessedPowerConsumptionMongo.py" (if you want to send data to MongoDB without the preprocessing run "python3 PowerConsumptionMongo.py") <br /> 
+7- Open Mongo express in the browser and check the results <br />
+
+## Mongo Express http://localhost:8081 <br />
 
