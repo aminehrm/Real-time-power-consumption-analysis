@@ -32,7 +32,7 @@ Note : All sketches are located in spark folder, In order to run any skitech go 
 
 <br />
 
-Chronograf http://localhost:8888/
+## Chronograf http://localhost:8888/
 ![Chronograf Power consumption analysis](https://user-images.githubusercontent.com/17914107/205452034-a7380b78-bae1-4797-a961-a2edfffd4d70.png)
 
 
