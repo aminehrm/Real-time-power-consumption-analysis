@@ -137,7 +137,7 @@ services:
     restart: always
     container_name: pyapp
     volumes:
-      - ./app:/var/www/app
+      - ./MongodbStream:/var/www/app
     ports:
       - 5000:5000
     depends_on:
