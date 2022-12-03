@@ -131,7 +131,7 @@ services:
 
   pyapp:
     build:
-      dockerfile: ./app/app.Dockerfile
+      dockerfile: ./MongodbStream/app.Dockerfile
       context: .
     image: klogambigai/python-mongo:v1
     restart: always
