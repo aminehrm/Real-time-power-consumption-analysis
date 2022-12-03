@@ -115,6 +115,35 @@ services:
     networks:
       - power-consumption-network
     
+  mongodb:
+      container_name: mongodb
+      image: mongo:latest
+      restart: always
+      environment:
+        MONGO_INITDB_ROOT_USERNAME: admin
+        MONGO_INITDB_ROOT_PASSWORD: admin
+      ports:
+        - 27017:27017
+      volumes:
+        - ./Mongodb:/data/db
+      networks:
+        - power-consumption-network
+
+  pyapp:
+    build:
+      dockerfile: ./app/app.Dockerfile
+      context: .
+    image: klogambigai/python-mongo:v1
+    restart: always
+    container_name: pyapp
+    volumes:
+      - ./app:/var/www/app
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongodb
+    networks:
+      - power-consumption-network
 
 networks:
   power-consumption-network:
