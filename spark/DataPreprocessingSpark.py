@@ -37,7 +37,7 @@ class PowerConsumption:
         df = df.withColumn(
             'Humidity_Classification',
             when(col('Humidity') > 80, lit('3')) #very high
-            .when(col('Humidity') > 50, lit('3')) #high
+            .when(col('Humidity') > 50, lit('2')) #high
             .otherwise(lit('1')) #low
         )
         return df
