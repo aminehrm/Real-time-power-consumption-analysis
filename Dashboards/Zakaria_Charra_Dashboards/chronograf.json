@@ -5,10 +5,6 @@
 			"0": {
 				"name": "http://influxdb:8086",
 				"link": "/chronograf/v1/sources/0"
-			},
-			"1": {
-				"name": "Influx 1",
-				"link": "/chronograf/v1/sources/1"
 			}
 		}
 	},
@@ -16,7 +12,7 @@
 		"id": "3",
 		"cells": [
 			{
-				"i": "793870e0-ac3c-4aa5-93c7-3980e4fa7eaf",
+				"i": "765323cc-fcf4-49d5-ac44-8e34fef226eb",
 				"x": 7,
 				"y": 3,
 				"w": 5,
@@ -122,11 +118,11 @@
 				"note": "",
 				"noteVisibility": "default",
 				"links": {
-					"self": "/chronograf/v1/dashboards/3/cells/793870e0-ac3c-4aa5-93c7-3980e4fa7eaf"
+					"self": "/chronograf/v1/dashboards/3/cells/765323cc-fcf4-49d5-ac44-8e34fef226eb"
 				}
 			},
 			{
-				"i": "8aa394e8-271a-4371-b33f-784848a2cb5f",
+				"i": "6b07be3e-8f8b-409a-8e04-2e210a7faaf7",
 				"x": 8,
 				"y": 0,
 				"w": 4,
@@ -239,11 +235,11 @@
 				"note": "To enable this graph, you will need to configure the Telegraf `disk` plugin. For more information, please visit the [Telegraf Disk plugin documentation](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/disk).",
 				"noteVisibility": "showWhenNoData",
 				"links": {
-					"self": "/chronograf/v1/dashboards/3/cells/8aa394e8-271a-4371-b33f-784848a2cb5f"
+					"self": "/chronograf/v1/dashboards/3/cells/6b07be3e-8f8b-409a-8e04-2e210a7faaf7"
 				}
 			},
 			{
-				"i": "ed6462f7-2fac-4811-900b-359950a76167",
+				"i": "36e29972-088e-4f48-9b90-573c66c148fc",
 				"x": 0,
 				"y": 0,
 				"w": 4,
@@ -359,11 +355,11 @@
 				"note": "To enable this graph, you will need to configure the Telegraf `mem` plugin. For more information, please visit the [Telegraf Mem plugin documentation](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/mem).",
 				"noteVisibility": "showWhenNoData",
 				"links": {
-					"self": "/chronograf/v1/dashboards/3/cells/ed6462f7-2fac-4811-900b-359950a76167"
+					"self": "/chronograf/v1/dashboards/3/cells/36e29972-088e-4f48-9b90-573c66c148fc"
 				}
 			},
 			{
-				"i": "526c1713-f4c9-4a0b-b3ce-0d7fce19d3d5",
+				"i": "28b593ca-f220-44d9-bf74-fa896faa2b8b",
 				"x": 4,
 				"y": 0,
 				"w": 4,
@@ -476,11 +472,11 @@
 				"note": "To enable this graph, you will need to configure the Telegraf `influxdb` plugin. For more information, please visit the [Telegraf InfluxDB plugin documentation](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/influxdb).",
 				"noteVisibility": "showWhenNoData",
 				"links": {
-					"self": "/chronograf/v1/dashboards/3/cells/526c1713-f4c9-4a0b-b3ce-0d7fce19d3d5"
+					"self": "/chronograf/v1/dashboards/3/cells/28b593ca-f220-44d9-bf74-fa896faa2b8b"
 				}
 			},
 			{
-				"i": "f30541f3-b4bc-4ab5-bc44-e7a779aad3e1",
+				"i": "28c23a87-7c76-41fc-aeee-faf52948211e",
 				"x": 0,
 				"y": 3,
 				"w": 7,
@@ -504,7 +500,7 @@
 							"range": null,
 							"shifts": null
 						},
-						"source": "/chronograf/v1/sources/1",
+						"source": "/chronograf/v1/sources/0",
 						"type": "flux"
 					}
 				],
@@ -593,7 +589,7 @@
 				"note": "",
 				"noteVisibility": "default",
 				"links": {
-					"self": "/chronograf/v1/dashboards/3/cells/f30541f3-b4bc-4ab5-bc44-e7a779aad3e1"
+					"self": "/chronograf/v1/dashboards/3/cells/28c23a87-7c76-41fc-aeee-faf52948211e"
 				}
 			}
 		],
