@@ -22,6 +22,7 @@ class PowerConsumption:
             StructField("PowerConsumption_Zone3", StringType()),
             StructField("PowerConsumption_Zones_AVG", StringType()),
             StructField("Humidity_Classification", StringType()),
+            StructField("WindSpeed_Classification", StringType()),
             StructField("Datetime", StringType())
         ])
         return schema
@@ -46,7 +47,16 @@ class PowerConsumption:
         df = df.distinct()
         return df
     
-    
+    @staticmethod
+    def windSpeedClassification(df):
+        df = df.withColumn(
+            'WindSpeed_Classification',
+             when(col('WindSpeed') > 3.5, lit('3')) # high
+            .when(col('WindSpeed') < 2, lit('1')) # low
+            .otherwise(lit('2')) # medium
+        )
+        return df
+
 if __name__ == "__main__":
     
     # create Spark session
@@ -70,13 +80,15 @@ if __name__ == "__main__":
     df = PowerConsumption.humidityClassification(df)
     # Remove duplicates
     df = PowerConsumption.removeDuplicates(df)
+    # Wind speed classification
+    df = PowerConsumption.windSpeedClassification(df)
     # Display our data schema structure
     df.printSchema()
     
     assert type(df) == pyspark.sql.dataframe.DataFrame
     row_df = df.select(
         to_json(struct("Datetime")).alias('key'),
-        to_json(struct('Temperature', 'Humidity', 'WindSpeed', 'GeneralDiffuseFlows', 'DiffuseFlows', 'PowerConsumption_Zone1', 'PowerConsumption_Zone2','PowerConsumption_Zone3','PowerConsumption_Zones_AVG','Humidity_Classification','Datetime')).alias("value")
+        to_json(struct('Temperature', 'Humidity', 'WindSpeed', 'GeneralDiffuseFlows', 'DiffuseFlows', 'PowerConsumption_Zone1', 'PowerConsumption_Zone2','PowerConsumption_Zone3','PowerConsumption_Zones_AVG','Humidity_Classification', 'WindSpeed_Classification','Datetime')).alias("value")
     )
     
     #Writing to console
