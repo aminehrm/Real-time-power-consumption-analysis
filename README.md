@@ -42,11 +42,12 @@ Note : All sketches are located in spark folder, In order to run any skitech go 
 <br />
 1- Run "docker-compose up --build" in root direcotry<br />
 2- Make sure that Mongodb , mongo express and pyapp containers are running<br />
-3- Open mongo express in the browser to check the databases <br />
-4- Go to kafka folder and run the procedure "python3 Procedure.py" <br /> 
-5- run "docker exec -it [Spark containerID]" to be inside SPARK container then run "spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0 DataPreprocessingSpark.py"<br /> 
-6-  Go to inside pyapp container and run the consumer "python3 ProcessedPowerConsumptionMongo.py" (if you want to send data to MongoDB without the preprocessing run "python3 PowerConsumptionMongo.py") <br /> 
-7- Open Mongo express in the browser and check the results <br />
+3-Mongo container may take some time for running , and then to make sure check http://localhost:27017/ (if you see this message : "It looks like you are trying to access MongoDB over HTTP on the native driver port" means it is working 
+4- Open mongo express in the browser to check the databases <br />
+5- Go to kafka folder and run the procedure "python3 Procedure.py" <br /> 
+6- run "docker exec -it [Spark containerID]" to be inside SPARK container then run "spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0 DataPreprocessingSpark.py"<br /> 
+7-  Go to inside pyapp container and run the consumer "python3 ProcessedPowerConsumptionMongo.py" (if you want to send data to MongoDB without the preprocessing run "python3 PowerConsumptionMongo.py") <br /> 
+8- Open Mongo express in the browser and check the results <br />
 
 ## Mongo Express http://localhost:8081 <br />
 
