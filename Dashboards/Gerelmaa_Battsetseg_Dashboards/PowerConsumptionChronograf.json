@@ -1,0 +1,413 @@
+{
+	"meta": {
+		"chronografVersion": "1.10.0",
+		"sources": {
+			"0": {
+				"name": "http://influxdb:8086",
+				"link": "/chronograf/v1/sources/0"
+			}
+		}
+	},
+	"dashboard": {
+		"id": "3",
+		"cells": [
+			{
+				"i": "2dbd8385-3839-45ae-85b2-5cebfa2cba85",
+				"x": 5,
+				"y": 0,
+				"w": 7,
+				"h": 4,
+				"name": "Monthly Max value of Humidity, Temperature, Windspeed",
+				"queries": [
+					{
+						"query": "from(bucket: \"powerConsumption\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"processedPowerConsumptionData\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Humidity\" or r[\"_field\"] == \"WindSpeed\" or r[\"_field\"] == \"Temperature\")\n  |> aggregateWindow(every: 30d, fn: max, createEmpty: false)\n  |> yield(name: \"max\")\n  ",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "from(bucket: \"powerConsumption\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"processedPowerConsumptionData\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Humidity\" or r[\"_field\"] == \"WindSpeed\" or r[\"_field\"] == \"Temperature\")\n  |> aggregateWindow(every: 30d, fn: max, createEmpty: false)\n  |> yield(name: \"max\")\n  ",
+							"range": null,
+							"shifts": null
+						},
+						"source": "/chronograf/v1/sources/0",
+						"type": "flux"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "bar",
+				"colors": [
+					{
+						"id": "51beb51e-2ce4-4666-ade3-ad7e066c976a",
+						"type": "scale",
+						"hex": "#31C0F6",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "c8dcb6fb-4075-4ca1-a592-c182cb7409fb",
+						"type": "scale",
+						"hex": "#A500A5",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "c896a085-381b-4c92-a61b-2180ae7a4f98",
+						"type": "scale",
+						"hex": "#FF7E27",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "_time",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "_value",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "_field",
+						"displayName": "",
+						"visible": false
+					},
+					{
+						"internalName": "_measurement",
+						"displayName": "",
+						"visible": false
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/3/cells/2dbd8385-3839-45ae-85b2-5cebfa2cba85"
+				}
+			},
+			{
+				"i": "29358fc4-e3d9-4cb9-8605-96d0fe12dd52",
+				"x": 0,
+				"y": 4,
+				"w": 12,
+				"h": 5,
+				"name": "weekly comparison of 3 zones",
+				"queries": [
+					{
+						"query": "from(bucket: \"powerConsumption\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._field == \"PowerConsumption_Zone1\" or r._field == \"PowerConsumption_Zone2\" or r._field == \"PowerConsumption_Zone3\")\n ",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "from(bucket: \"powerConsumption\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._field == \"PowerConsumption_Zone1\" or r._field == \"PowerConsumption_Zone2\" or r._field == \"PowerConsumption_Zone3\")\n ",
+							"range": null,
+							"shifts": null
+						},
+						"source": "/chronograf/v1/sources/0",
+						"type": "flux"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "log"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line-stepplot",
+				"colors": [
+					{
+						"id": "14107d5d-9641-4d57-8a9d-7493892ddc99",
+						"type": "scale",
+						"hex": "#31C0F6",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "44341449-93e3-40cd-ad3c-198fade50e82",
+						"type": "scale",
+						"hex": "#A500A5",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "00de0cda-51c3-4fa6-80de-3d9f106e87c0",
+						"type": "scale",
+						"hex": "#FF7E27",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "_time",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "_value",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "_field",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "_measurement",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/3/cells/29358fc4-e3d9-4cb9-8605-96d0fe12dd52"
+				}
+			},
+			{
+				"i": "8e5b7348-4e2c-4aaa-a116-225a0c353099",
+				"x": 0,
+				"y": 0,
+				"w": 5,
+				"h": 4,
+				"name": "Daily max value of Humidity",
+				"queries": [
+					{
+						"query": "from(bucket: \"powerConsumption\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"processedPowerConsumptionData\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Humidity\")\n  |> aggregateWindow(every: 1d, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "from(bucket: \"powerConsumption\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"processedPowerConsumptionData\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Humidity\")\n  |> aggregateWindow(every: 1d, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+							"range": null,
+							"shifts": null
+						},
+						"source": "/chronograf/v1/sources/0",
+						"type": "flux"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "Humidity",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "log"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "gauge",
+				"colors": [
+					{
+						"id": "0",
+						"type": "min",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "0"
+					},
+					{
+						"id": "1",
+						"type": "max",
+						"hex": "#9394FF",
+						"name": "comet",
+						"value": "100"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "_time",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "_value",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "_field",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "_measurement",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/3/cells/8e5b7348-4e2c-4aaa-a116-225a0c353099"
+				}
+			}
+		],
+		"templates": [],
+		"name": "Chronograf_Dashboard",
+		"organization": "default",
+		"links": {
+			"self": "/chronograf/v1/dashboards/3",
+			"cells": "/chronograf/v1/dashboards/3/cells",
+			"templates": "/chronograf/v1/dashboards/3/templates"
+		}
+	}
+}
