@@ -57,6 +57,11 @@ class PowerConsumption:
         )
         return df
 
+    @staticmethod
+    def filterSketch(df):
+        df = df.filter(col('Temperature') > 0).show(truncate=False)
+        return df
+
 if __name__ == "__main__":
     
     # create Spark session
@@ -82,6 +87,8 @@ if __name__ == "__main__":
     df = PowerConsumption.removeDuplicates(df)
     # Wind speed classification
     df = PowerConsumption.windSpeedClassification(df)
+    # get data when temperature greater than 0 
+    df = PowerConsumption.filterSketch(df)
     # Display our data schema structure
     df.printSchema()
     
