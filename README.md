@@ -3,8 +3,7 @@ With the electricity consumption being so crucial worldwide, the idea is to stud
 <br />
 
 ## Project architecture diagram
-
-![architecture](https://user-images.githubusercontent.com/17914107/201059480-6cc7c7a5-e341-4e85-84c0-1d6253925cad.png)
+![architecture](https://user-images.githubusercontent.com/42595849/205466497-d2bd1f8b-2544-407e-aca3-9a20cb5349b1.png)
 
 <br />
 
