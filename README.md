@@ -17,7 +17,7 @@ With the electricity consumption being so crucial worldwide, the idea is to stud
 6-  Go to kafka folder again and run the consumer "python3 ProcessedPowerConsumptionConsumer.py" (if you want to send data to influxdb without the preprocessing run "python3 PowerConsumptionConsumer.py") <br /> 
 7- Create a new Influxdb data source in Grafana to vizualize the results<br />
 
-Note : All sketches are located in spark folder, In order to run any skitech go inside spark docker container then run spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0 <sketch_name.py>"
+Note : All sketches are located in spark and kafka folder, in order to run spark sketches go inside the spark docker container then run "spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0 <sketch_name.py>". and for Kafka sketches go inside kafka folder then use "python3 [sketch-name]
 
 ## Grafana http://localhost:3000/ ( admin - admin )<br />
 
