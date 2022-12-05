@@ -23,7 +23,7 @@ for message in consumer:
     cms.add('temperature', math.ceil(locale.atof(value['Temperature'])))
     cms.add('humidity', math.ceil(locale.atof(value['Humidity'])))
     cms.add('windSpeed', math.ceil(locale.atof(value['WindSpeed'])))
-
+    cms.add('transaction', 1)
 
     print("=======================================================================")
     print("temperature")
@@ -34,6 +34,8 @@ for message in consumer:
 
     print("windSpeed")
     print(cms.check('windSpeed'))
+    print("transaction")
+    print(cms.check('transaction'))
 
 '''
     =======================================================================
@@ -43,4 +45,6 @@ for message in consumer:
     152530
     windSpeed
     4880
+    transaction
+    3419
 '''
