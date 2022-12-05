@@ -88,7 +88,7 @@ if __name__ == "__main__":
     # Wind speed classification
     df = PowerConsumption.windSpeedClassification(df)
     # get data when temperature greater than 0 
-    df = PowerConsumption.filterSketch(df)
+    #df = PowerConsumption.filterSketch(df)
     # Display our data schema structure
     df.printSchema()
     
